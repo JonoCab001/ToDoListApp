@@ -4,6 +4,7 @@ List<string> toDoList = new List<string>();
 
 while (true)
 {
+    // Display the tasks in the to-do list
     if (toDoList.Count > 0)
     {
         Console.WriteLine("** To-do list **");
@@ -27,6 +28,7 @@ while (true)
 
     int choice = int.Parse(Console.ReadLine());
 
+    // Add a Task to the to-do list
     if (choice == (int)UserChoice.AddTask)
     {
         Console.Write("Please Enter Task here: ");
@@ -35,6 +37,7 @@ while (true)
         Console.Clear();
         Console.WriteLine("Task has been added successfully! :)");
     }
+    // Delete a task from the list by entering a Task number
     else if (choice == (int)UserChoice.DeleteTask)
     {
         if (toDoList.Count > 0)
@@ -64,11 +67,13 @@ while (true)
             }
         }
     }
+    // Exit the application
     else if (choice == (int)UserChoice.Exit) {
         break;
     }
 }
 
+// User Choices
 enum UserChoice
 {
     AddTask = 1,
