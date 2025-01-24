@@ -22,7 +22,8 @@ while (true)
     }
 
     Console.WriteLine("1. Add a Task");
-    Console.WriteLine("2. Quit");
+    Console.WriteLine("2. Delete Task");
+    Console.WriteLine("3. Quit");
 
     int choice = int.Parse(Console.ReadLine());
 
@@ -34,6 +35,35 @@ while (true)
         Console.Clear();
         Console.WriteLine("Task has been added successfully! :)");
     }
+    else if (choice == (int)UserChoice.DeleteTask)
+    {
+        if (toDoList.Count > 0)
+        {
+            Console.WriteLine("Please enter the number of a task you want to delete: ");
+
+            for (int i = 0; i < toDoList.Count; i++)
+            {
+                Console.WriteLine("(" + (i + 1) + ") " + toDoList[i]);
+            }
+
+            int taskNumb = int.Parse(Console.ReadLine());
+            taskNumb--;
+
+            if (taskNumb >=  0 && taskNumb < toDoList.Count)
+            {
+                toDoList.RemoveAt(taskNumb);
+                Console.Clear();
+                Console.WriteLine("Successfully Deleted Task!");
+                Console.WriteLine("");
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Sorry, task number is invalid :(");
+                Console.WriteLine("");
+            }
+        }
+    }
     else if (choice == (int)UserChoice.Exit) {
         break;
     }
@@ -42,5 +72,6 @@ while (true)
 enum UserChoice
 {
     AddTask = 1,
+    DeleteTask,
     Exit
 }
